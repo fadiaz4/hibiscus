@@ -9,7 +9,7 @@ let products = [
     },
     {
         name: "Bikini de colores",
-        tag: "bikini_lines",
+        tag: "biki_lines",
         price: 20,
         inCart: 0
     },
@@ -189,7 +189,7 @@ function displayCart() {
         productContainer.innerHTML = '';
         Object.values(cartItems).map((item, _index) => {
             productContainer.innerHTML +=
-                `<div class="product"><i class="fa fa-dot-circle-o" aria-hidden="true"></i><img src="/static/images/${item.tag}.png" />
+                `<div class="product"><i class="fa fa-dot-circle-o" aria-hidden="true"></i><img src="/static/images/${item.tag}.PNG" />
                     <span class="sm-hide">${item.name}</span>
                 </div>
                 <div class="price sm-hide">$${item.price}.00</div>

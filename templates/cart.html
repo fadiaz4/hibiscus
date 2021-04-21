@@ -5,11 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/static/stylecart.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
   .w3-sidebar a {
-    font-family: "Poppins", sans-serif
+    font-family: "Roboto", sans-serif
   }
 
   body,
@@ -20,7 +21,7 @@
   h5,
   h6,
   :left :left .w3-wide {
-    font-family: "Poppins", sans-serif;
+    font-family: "Montserrat", sans-serif;
   }
 </style>
 
@@ -89,7 +90,7 @@
         </div>
         <button onclick="clearAll()"> Eliminar todos<i
             class="fa fa-trash fa-2x w3-margin-rigth w3-margin-left"></i></button>
-        <button><a href="{{url_for('static', filename='checkout.html')}}">Procede a pagar<i
+        <button><a href="{{url_for('checkout.html')}}">Procede a pagar<i
               class="fa fa-credit-card-alt fa-2x w3-margin-rigth w3-margin-left"></i></a></button>
       </div>
 
