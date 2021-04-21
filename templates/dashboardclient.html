@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hibiscus El Salvador</title>
+    <link rel="stylesheet" href="/static/main.css" />
+    <link <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .w3-sidebar a {
+            font-family: "Poppins", sans-serif
+        }
+
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .w3-wide {
+            font-family: "Poppins", sans-serif;
+        }
+    </style>
+</head>
+
+<body class="w3-content" style="max-width:1200px">
+
+    <!-- Sidebar -->
+    <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
+        <div class="w3-container w3-display-container w3-padding-16">
+            <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
+            <h3 class="w3-wide"><b><img src="/static/images/hibiscusSV.png"></b></h3>
+        </div>
+        <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
+            <a href="./#Conocenos" class="w3-bar-item w3-button">Nosotros</a>
+            <a href="{{url_for('swimmwear')}}" class="w3-bar-item w3-button">Swimmwear</a>
+            <a href="{{url_for('otros')}}" class="w3-bar-item w3-button">Otros</a>
+        </div>
+        <a href="#footer" class="w3-bar-item w3-button w3-padding">Contáctanos</a>
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding"
+            onclick="document.getElementById('newsletter').style.display='block'">Suscríbete</a>
+    </nav>
+
+    <!-- Menú de arriba en pantallas pequeñas -->
+    <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
+        <div class="w3-bar-item w3-padding-24 w3-wide"><img src="/static/images/hibiscusSV.png"></div>
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i
+                class="fa fa-bars"></i></a>
+    </header>
+
+    <!-- Abriendo la sidebar en pantallas pequeñas-->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu"
+        id="myOverlay"></div>
+
+    <!-- Contenido de la página -->
+    <div class="w3-main" style="margin-left:250px">
+
+        <!-- Lanzar contenido en pantallas pequeñas -->
+        <div class="w3-hide-large" style="margin-top:83px"></div>
+
+        <!-- Encabezado superior -->
+        <header class="w3-container w3-xlarge">
+            <div class="nav">
+                <a href="./">Hibiscus El Salvador</a>
+                <div id="headerM">
+                    <p class="w3-right">
+                        <a href="{{url_for('cart')}}"><i class="fa fa-shopping-cart w3-margin-right"></i></a>
+                        <a href="{{url_for('login')}}"><i class="fa fa-user w3-margin-right"></i></a>
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <body style="margin:30px">
+            <h2>Dashboard</h2>
+            <p align="left"><small>En esta tabla podrás ingresar tus compras con fecha y monto para llevar un registro
+                </small></p>
+
+
+            <div class="container">
+
+                <div class="row">
+                    <form>
+                        <fieldset>
+                            <legend>Fecha</legend>
+                            <input type="date" class="form-control" name="" id="item">
+
+                            <legend>Precio</legend>
+                            <input type="number" class="form-control" id="quantity" name="">
+                            <br>
+                            <button type="button" id="insert" class="btn btn-success">Insertar</button>
+
+                            <button type="button" id="create" class="btn btn-success">Crear Tabla</button>
+
+                            <button type="button" id="remove" class="btn btn-danger">Eliminar Tabla</button>
+
+                            <button type="button" id="list" class="btn btn-success">Mostrar historial</button>
+                            <p><small>
+                                    Notas: <br> -La tabla debe ser creada antes de ingresar una compra
+                                    <br>-Al eliminar una tabla por completo solo debe recargar la página para poder
+                                    reiniciarla
+                                </small></p>
+                        </fieldset>
+                    </form>
+
+                    <hr>
+                    <h4>Historial</h4>
+                    <table class="table table-bordered table-hover" id="itemlist">
+
+                    </table>
+
+
+
+
+                </div>
+                <!-- Sección de suscripción -->
+                <div class="w3-container w3-black w3-padding-32">
+                    <h1>Subscríbete</h1>
+                    <p>Para obtener ofertas especiales y enterárte de las novedades:</p>
+                    <p><input class="w3-input w3-border" type="text" placeholder="Ingresa tu e-mail" style="width:100%">
+                    </p>
+                    <button type="button" class="w3-button w3-red w3-margin-bottom">Subscríbete</button>
+                </div>
+                <!-- Pie de página -->
+                <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
+                    <div class="w3-row-padding">
+                        <div class="w3-col s4">
+                            <h4>Contáctanos</h4>
+                            <p>¿Tienes preguntas? Te responderemos lo más pronto posible.</p>
+                            <form action="/action_page.php" target="_blank">
+                                <p><input class="w3-input w3-border" type="text" placeholder="Nombre" name="Nombre"
+                                        required></p>
+                                <p><input class="w3-input w3-border" type="text" placeholder="Email" name="Email"
+                                        required>
+                                </p>
+                                <p><input class="w3-input w3-border" type="text" placeholder="Asunto" name="Asunto"
+                                        required></p>
+                                <p><input class="w3-input w3-border" type="text" placeholder="Mensaje" name="Mensaje"
+                                        required></p>
+                                <button type="submit" class="w3-button w3-block w3-black">Enviar</button>
+                            </form>
+                        </div>
+
+                        <div class="w3-col s4">
+                            <h4>Acerca de</h4>
+                            <p><a href="./Conocenos">Conócenos</a></p>
+                            <p><a href="./#Entregas">Entregas</a></p>
+                            <p><a href="./#Pago">Pago</a></p>
+                            <p><a href="./#Cambio">Devoluciones</a></p>
+                        </div>
+
+                        <div class="w3-col s4 w3-justify">
+                            <h4>Nosotros</h4>
+                            <p><i class="fa fa-fw fa-map-marker"></i>Santa Tecla, El Salvador</p>
+                            <p><i class="fa fa-fw fa-phone"></i>503 7682 6922</p>
+                            <a href="mailto:hibiscusswimsv@gmail.com"><i class="fa fa-fw fa-envelope"></i>
+                                hibiscusswimsv@gmail.com</a>
+                            <h4>Aceptamos</h4>
+                            <p><i class="fa fa-money aria-hidden=true"></i> Efectivo</p>
+                            <p><i class="fa fa-fw fa-credit-card"></i> Tarjeta de crédito</p>
+                            <br>
+                            <a href="https://www.facebook.com/svhibiscus" target="_blank"><i
+                                    class="fa fa-facebook-official w3-hover-opacity w3-large"></i> HIBISCUS
+                                SWIMWEAR</a>
+                            <br>
+                            <a href="https://www.instagram.com/svhibiscus/" target="_blank"><i
+                                    class="fa fa-instagram w3-hover-opacity w3-large"></i> svhibiscus
+
+                            </a>
+                        </div>
+                    </div>
+                </footer>
+
+                <div class="w3-black w3-center w3-padding-24">Powered by Hibuscus El Salvador</a>
+                </div>
+
+                <!-- Contenido del final de la página -->
+            </div>
+
+            <!-- Suscripción -->
+            <div id="newsletter" class="w3-modal">
+                <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
+                    <div class="w3-container w3-white w3-center">
+                        <i onclick="document.getElementById('newsletter').style.display='none'"
+                            class="fa fa-remove w3-right w3-button w3-transparent w3-xxlarge"></i>
+                        <h2 class="w3-wide">SUSCRÍBETE</h2>
+                        <p>Únete a nuestra lista de correo para recibir actualizaciones sobre nuevas
+                            colecciones
+                            y ofertas especiales.</p>
+                        <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail"></p>
+                        <button type="button" class="w3-button w3-padding-large w3-red w3-margin-bottom"
+                            onclick="document.getElementById('newsletter').style.display='none'">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+
+            <script src="{{url_for('static', filename='jquery.js')}}"></script>
+            <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    </div>
+
+
+
+    <script type="text/javascript">
+
+        var db = openDatabase("DBcompras", "1.0", "DBcompras", 65535); // DBcompras is the database name
+
+
+        $(function () {
+
+            loadData(); //loading our records
+
+
+
+            //CREATING TABLE STARTS HERE
+
+            $("#create").click(function () {
+                db.transaction(function (transaction) {
+                    var sql = "CREATE TABLE items " +
+                        "(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                        "item VARCHAR(100) NOT NULL," +
+                        "quantity INT(5) NOT NULL)";
+                    transaction.executeSql(sql, undefined, function () {
+                        alert("La tabla se creó correctamente");
+                    }, function () {
+                        alert("La tabla ya fue creada");
+                    })
+                });
+            });
+            // CREATING TABLE ENDS HERE
+
+
+
+            //DELETING TABLE STARTS HERE
+            $("#remove").click(function () {
+
+                if (!confirm("Confirme que desea vaciar la tabla", "")) return;;
+                db.transaction(function (transaction) {
+                    var sql = "DROP TABLE items";
+                    transaction.executeSql(sql, undefined, function () {
+                        alert("La tabla fue eliminada correctamente")
+                    }, function (transaction, err) {
+                        alert(err.message);
+                    })
+                });
+            });
+            //DELETING TABLE ENDS HERE
+
+
+
+            //INSERTING DATA INTO TABLE
+
+            $("#insert").click(function () {
+                var item = $("#item").val();
+                var qty = $("#quantity").val();
+                db.transaction(function (transaction) {
+                    var sql = "INSERT INTO items(item,quantity) VALUES(?,?)";
+                    transaction.executeSql(sql, [item, qty], function () {
+                        alert("Nuevo producto añadido satisfactoriamente");
+                    }, function (transaction, err) {
+                        alert(err.message);
+                    })
+                })
+            })
+            //INSERTING DATA ENDS HERE
+
+
+            //FETCHING OUR RECORD
+            $("#list").click(function () {
+                loadData();
+            })
+
+
+
+            //FUNCTION TO LOAD OUR RECORDS
+            function loadData() {
+                $("#itemlist").children().remove();
+                db.transaction(function (transaction) {
+                    var sql = "SELECT * FROM items ORDER BY id DESC";
+                    transaction.executeSql(sql, undefined, function (transaction, result) {
+                        if (result.rows.length) {
+
+                            for (var i = 0; i < result.rows.length; i++) {
+                                var row = result.rows.item(i);
+                                var item = row.item;
+                                var id = row.id;
+                                var quantity = row.quantity;
+                                $("#itemlist").append('<tr id="del' + id + '"><td>' + id + '</td><td>' + " || " + item + '</td><td id="newqty' + id + '">' + " || " + quantity + '</td><td><a href="#" class="btn btn-danger deleteitem" data-id="' + id + '">Delete</a> <a href="#" class="btn btn-primary updateitem" data-id="' + id + '">Update</a></td></tr>');
+                            }
+                        } else {
+                            $("#itemlist").append('<tr><td colspan="3" align="center">No Item Found</td></tr>');
+                        }
+                    }, function (transaction, err) {
+                        alert('La tabla no ha sido creada. Click en "Crear Tabla" para crear la tabla ahora');
+                    })
+                })
+
+
+
+
+                //setTimeout was used to execute codes inside it to be loaded after records are loaded/fetched.
+
+                setTimeout(function () {
+                    $(".deleteitem").click(function () {
+                        var sure = confirm("Confirme que desea eliminar este producto");
+                        if (sure === true) {
+                            var id = $(this).data("id");
+                            db.transaction(function (transaction) {
+                                var sql = "DELETE FROM items where id=?";
+                                transaction.executeSql(sql, [id], function () {
+                                    $("#del" + id).fadeOut();
+                                    alert("Producto eliminado correctamente");
+                                }, function (transaction, err) {
+                                    alert(err.message);
+                                })
+                            });
+                        }
+                    })
+
+                    $(".updateitem").click(function () {
+                        var qty = prompt("Ingresa el nuevo precio", 1);
+                        if (qty !== null) {
+                            var id = $(this).data("id");
+                            db.transaction(function (transaction) {
+                                var sql = "UPDATE items SET quantity=? where id=?";
+                                transaction.executeSql(sql, [qty, id], function () {
+                                    $("#newqty" + id).html(qty);
+                                    alert("Producto actualizado correctamente");
+                                }, function (transaction, err) {
+                                    alert(err.message);
+                                })
+                            });
+                        }
+                    })
+
+                }, 1000);
+
+
+            }
+            //END OF loadData() function
+
+
+
+
+        });
+
+
+    </script>
+
+    <script src="{{url_for('static', filename='jquery.js')}}"></script>
+
+
+</body>
+
+</html>

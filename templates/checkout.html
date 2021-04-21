@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<title>Hibiscus El Salvador</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/static/checkoutstyle.css">
+<link rel="stylesheet" href="/static/main.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .w3-sidebar a {
+        font-family: "Poppins", sans-serif
+    }
+
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    :left :left .w3-wide {
+        font-family: "Poppins", sans-serif;
+    }
+</style>
+
+<body class="w3-content" style="max-width:1200px">
+
+    <!-- Sidebar -->
+    <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
+        <div class="w3-container w3-display-container w3-padding-16">
+            <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
+            <h3 class="w3-wide"><b><img src="/static/images/hibiscusSV.png"></b></h3>
+        </div>
+        <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
+            <a href="./#Conócenos" class="w3-bar-item w3-button">Nosotros</a>
+            <a href="{{url_for('swimmwear')}}" class="w3-bar-item w3-button">Swimmwear</a>
+            <a href="{{url_for('otros')}}" class="w3-bar-item w3-button">Otros</a>
+        </div>
+    </nav>
+
+    <!-- Menú de arriba en pantallas pequeñas -->
+    <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
+        <div class="w3-bar-item w3-padding-24 w3-wide"><img src="/static/images/hibiscusSV.png"></div>
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i
+                class="fa fa-bars"></i></a>
+    </header>
+
+    <!-- Abriendo la sidebar en pantallas pequeñas-->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu"
+        id="myOverlay"></div>
+
+    <!-- Contenido de la página -->
+    <div class="w3-main" style="margin-left:250px">
+
+
+        <!-- Lanzar contenido en pantallas pequeñas -->
+        <div class="w3-hide-large" style="margin-top:83px"></div>
+
+        <!-- Encabezado superior -->
+        <header class="w3-container w3-xlarge">
+            <div class="nav">
+                <a href="/templates/index.html">Hibiscus El Salvador</a>
+                <div id="headerM">
+                    <p class="w3-right">
+                        <a href="{{url_for('cart')}}"><i class="fa fa-shopping-cart w3-margin-right"></i></a>
+                        <a href="{{url_for('login')}}"><i class="fa fa-user w3-margin-right"></i></a>
+                    </p>
+                </div>
+            </div>
+        </header>
+
+
+        <body>
+            <div class="app-container">
+                <div class="top-box">
+                    <p>PAGO DE TU PEDIDO</p>
+                </div>
+                <div class="middle-box">
+                    <p>
+                    </p>
+                    <h1>
+                        <a href="{{url_for('index')}}">
+                            <img src="/static/images/hibiscusSV.png" style="z-index:3;width: 13rem;" />
+                        </a>
+                    </h1>
+                    <h2 class="total" id="97">
+                        TOTAL
+                        <script>
+                            function displayCost() {
+                                if (localStorage.getItem("totalCost") != null) {
+                                    document.getElementById("97").innerHTML = "TOTAL A PAGAR: $" + localStorage.getItem("totalCost") + ".00 "
+                                } else {
+                                    document.getElementById("97").innerHTML = "TOTAL A PAGAR:  $0.00 "
+                                }
+                            }
+                        </script>
+                    </h2>
+                    <p><button onclick="displayCost()" class="btn-total" type="button">Mostrar el total</button></p>
+                </div>
+                <div class="card-details">
+                    <p>Paga usando tu tarjeta de crédito o débito</p>
+                    <div class="card-num-field-group">
+                        <label>Numero de tarjeta</label>
+                        <input type="text" class="card-num-field" placeholder="xxxx-xxxx-xxxx-xxxx">
+                    </div>
+                    <div class="cvc-field-group">
+                        <label>CVC</label>
+                        <input type="password" class="cvc-field" placeholder="xxx">
+                    </div>
+                    <div class="date-field-group">
+                        <label>Fecha de expiración</label>
+                        <input type="text" class="date-field" placeholder="mm">
+                        <input type="text" class="date-field" placeholder="yyyy">
+                    </div>
+
+                    <div class="name-field-group">
+                        <label>Nombre del titular</label>
+                        <input type="text" class="name-field" placeholder="Nombre completo del titular">
+                    </div>
+                    <div class="mail-field-group">
+                        <label>Correo electrónico</label>
+                        <input type="text" class="mail-field"
+                            placeholder="Recuerda escribir bien tu correo electrónico">
+                    </div>
+                    <div class="number-field-group">
+                        <label>Numero telefónico</label>
+                        <input type="text" class="number-field" placeholder="Número telefónico para concretar entrega">
+                    </div>
+                    <p><button onclick="confirmation()" type="button" class="pay-btn">Completar Pago</button></p>
+                    <script>
+                        function confirmation() {
+                            var txt;
+                            var r = confirm("Presiona aceptar para confirmar tu pedido");
+                            if (r == true) {
+                                var a = confirm("¡ gracias por su compra, sera redireccionado en momentos al whatsapp de Hibiscus para concretar su envío!");
+                                if (a == true) {
+                                    setTimeout(function redireccionar() { window.location.href = "https://wa.me/50376826922?text=Acabo%20de%20realizar%20una%20compra%20mi%20nombre%20es:"; }, 8000);
+                                    sessionStorage.clear();
+                                    console.log(localStorage)
+                                } else {
+                                    txt = alert("Por favor, vuelva a intentarlo otra vez. Asegurese de darle aceptar");
+                                }
+                            } else {
+                                txt = alert("SE HA CANCELADO EL PEDIDO");
+                            }
+                        }
+
+                    </script>
+                </div>
+            </div>
+
+
+
+    </div>
+
+
+    <script src="{{url_for('static', filename='cart.js')}}"></script>
+    <script src="{{url_for('static', filename='preload.js')}}"></script>
+    <script src="{{url_for('static', filename='main.js')}}"></script>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+</body>
+
+</html>
